@@ -26,8 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialize the player obj
-spd = 4;
-global.fasterSpd = 10;
+spd = 5;
+hSpd = 0;
+vSpd = 0;
 
 </string>
           </argument>
@@ -60,23 +61,57 @@ var down = keyboard_check(vk_down);
 
 if (right)    
 {
-    x+=spd;
+    hSpd = spd;
 }
 
 if (left)
 {
-    x-=spd;
+    hSpd = -spd;
 }
 
 if (up)
 {
-    y-=spd;
+    vSpd = -spd;    
 }
 
 if (down)
 {
-    y+=spd;    
+    vSpd = spd;    
 }
+
+// friction (tells the player to stop moving)
+if (!right &amp;&amp; !left)
+{
+    hSpd = 0;
+}
+
+if (!up &amp;&amp; !down)
+{
+    vSpd = 0;
+}
+
+// horizontal collisions
+if (place_meeting(x+hSpd, y, objSolid))
+{
+    while(!place_meeting(x+sign(hSpd), y, objSolid)) {
+        x+=sign(hSpd);
+    }
+    hSpd = 0;
+}
+x+=hSpd;
+
+// vertical collisions
+if(place_meeting(x, y+vSpd, objSolid))
+{
+    while(!place_meeting(x, y+sign(vSpd), objSolid))
+    {
+        y+=sign(vSpd);
+    }
+    vSpd = 0;
+}
+y+=vSpd;
+
+
 </string>
           </argument>
         </arguments>
