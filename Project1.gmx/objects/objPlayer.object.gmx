@@ -27,8 +27,12 @@
             <kind>1</kind>
             <string>/// Initialize the player obj
 spd = 5;
+runSpd = 8;
 hSpd = 0;
+hSpdDir = 0;
 vSpd = 0;
+grav = 1.5;
+state = MoveState;
 
 </string>
           </argument>
@@ -52,66 +56,88 @@ vSpd = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// control the player
-
-var right = keyboard_check(vk_right);
-var left = keyboard_check(vk_left);
-var up = keyboard_check(vk_up);
-var down = keyboard_check(vk_down);
-
-if (right)    
+            <string>/// control player's state
+script_execute(state);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="80">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// change state
+if(state == PauseState)
 {
-    hSpd = spd;
+    state = MoveState;
+}
+else 
+{
+    state = PauseState;
 }
 
-if (left)
-{
-    hSpd = -spd;
-}
-
-if (up)
-{
-    vSpd = -spd;    
-}
-
-if (down)
-{
-    vSpd = spd;    
-}
-
-// friction (tells the player to stop moving)
-if (!right &amp;&amp; !left)
-{
-    hSpd = 0;
-}
-
-if (!up &amp;&amp; !down)
-{
-    vSpd = 0;
-}
-
-// horizontal collisions
-if (place_meeting(x+hSpd, y, objSolid))
-{
-    while(!place_meeting(x+sign(hSpd), y, objSolid)) {
-        x+=sign(hSpd);
-    }
-    hSpd = 0;
-}
-x+=hSpd;
-
-// vertical collisions
-if(place_meeting(x, y+vSpd, objSolid))
-{
-    while(!place_meeting(x, y+sign(vSpd), objSolid))
-    {
-        y+=sign(vSpd);
-    }
-    vSpd = 0;
-}
-y+=vSpd;
-
-
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// set state to run
+state = RunState;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// return to movestate
+state = MoveState;
 </string>
           </argument>
         </arguments>

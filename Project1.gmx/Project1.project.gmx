@@ -22,6 +22,17 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="HelperScripts">
+      <script>scripts\move.gml</script>
+    </scripts>
+    <scripts name="PlayerStates">
+      <script>scripts\MoveState.gml</script>
+      <script>scripts\PauseState.gml</script>
+      <script>scripts\RunState.gml</script>
+      <script>scripts\LedgeGrabState.gml</script>
+    </scripts>
+  </scripts>
   <objects name="objects">
     <objects name="Player">
       <object>objects\objPlayer</object>
