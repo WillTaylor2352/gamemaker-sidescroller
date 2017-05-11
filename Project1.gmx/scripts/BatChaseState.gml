@@ -1,6 +1,7 @@
 ///batChaseState()
 if (instance_exists(objPlayer))
 {
+    darkenBehind();
     var dir = point_direction(x, y, objPlayer.x, objPlayer.y);
     hSpd = lengthdir_x(spd, dir);
     vSpd = lengthdir_y(spd, dir);

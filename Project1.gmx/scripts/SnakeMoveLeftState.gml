@@ -1,4 +1,5 @@
 ///snakeMoveRightState()
+darkenBehind();
 
 var wallAtLeft = place_meeting(x-1, y, objDirt);
 var ledgeAtLeft = !position_meeting(bbox_left-1, bbox_bottom+1, objDirt);

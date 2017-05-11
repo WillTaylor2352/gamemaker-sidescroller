@@ -1,5 +1,7 @@
 ///hurtState()
+
 sprite_index = sprPlayerDamage;
+darkenBehind();
 
 if (hSpd != 0)
 {

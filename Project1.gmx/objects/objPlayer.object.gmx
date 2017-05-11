@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>sprPlayerMask</maskName>
   <events>
@@ -149,6 +149,7 @@ else
 
 if (keyboard_check(vk_up))
 {
+    y = yprevious;
     state = ExitState;
 }
 

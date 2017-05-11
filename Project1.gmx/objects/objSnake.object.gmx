@@ -29,6 +29,9 @@
 image_speed = .1;
 
 // choose which direction to head
+
+darkenBehind();
+
 state = choose(SnakeMoveRightState, SnakeMoveLeftState);
 </string>
           </argument>

@@ -4,9 +4,10 @@ var upSpace = keyboard_check(vk_space);
 var down = keyboard_check(ord('S')) || keyboard_check(vk_down);
 var shift = keyboard_check(vk_shift);
 
+
 //vSpd = 0;
 sprite_index = sprPlayerLedgeGrab;
-
+darkenBehind();
 
 if (down)
 {

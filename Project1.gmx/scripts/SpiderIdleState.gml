@@ -1,6 +1,8 @@
 ///spiderIdleState
 if(instance_exists(objPlayer))
 {
+    
+    
     var dis = distance_to_object(objPlayer);
     
     if(dis < sight && alarm[0] <= 0)

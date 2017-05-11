@@ -1,6 +1,8 @@
 ///spiderJumpState
 image_index = image_number - 1; 
 
+darkenBehind();
+
 //apply gravity
 
 if (!place_meeting(x, y+1, objDirt))
@@ -30,4 +32,4 @@ if (hSpd != 0)
 }
 
 //move
-horizontalMoveBounce(objDirt);
+horizontalMoveBounce(objSolid);

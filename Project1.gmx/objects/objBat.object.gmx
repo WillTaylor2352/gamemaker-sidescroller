@@ -32,7 +32,7 @@ image_speed = .25;
 hSpd = 0; 
 vSpd = 0; 
 spd = 2;
-
+darkenBehind();
 state = BatIdleState;
 sight = 180;
 </string>

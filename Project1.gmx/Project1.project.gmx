@@ -21,6 +21,8 @@
       <sprite>sprites\sprBackgroundDirt</sprite>
       <sprite>sprites\sprEntrance</sprite>
       <sprite>sprites\sprExit</sprite>
+      <sprite>sprites\sprDirtTop</sprite>
+      <sprite>sprites\sprDirtEdge</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\sprSnake</sprite>
@@ -37,7 +39,7 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\background0</background>
+    <background>background\bgDirt</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -46,6 +48,7 @@
       <script>scripts\directionMoveBounce.gml</script>
       <script>scripts\horizontalMoveBounce.gml</script>
       <script>scripts\applyFriction.gml</script>
+      <script>scripts\darkenBehind.gml</script>
     </scripts>
     <scripts name="PlayerStates">
       <script>scripts\MoveState.gml</script>
@@ -79,6 +82,7 @@
       <object>objects\objDirtNS</object>
       <object>objects\objEntrance</object>
       <object>objects\objExit</object>
+      <object>objects\objBackground</object>
     </objects>
     <objects name="Enemies">
       <object>objects\objEnemyParent</object>
@@ -91,8 +95,10 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
     <room>rooms\room2</room>
+    <room>rooms\room4</room>
+    <room>rooms\room5</room>
+    <room>rooms\room1</room>
     <room>rooms\room3</room>
   </rooms>
   <help>

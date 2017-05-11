@@ -7,6 +7,7 @@ var upRelease = keyboard_check_released(ord('W')) || keyboard_check_released(vk_
 var upSpace = keyboard_check(vk_space);
 var upSpaceRelease = keyboard_check_released(vk_space);
 var down = keyboard_check(ord('S')) || keyboard_check(vk_down);
+darkenBehind();
 
 //if not on the ground
 if (!place_meeting(x, y+1, objDirt))
