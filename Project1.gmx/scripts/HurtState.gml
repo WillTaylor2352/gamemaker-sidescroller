@@ -7,7 +7,7 @@ if (hSpd != 0)
 }
 
 //apply gravity
-if (!place_meeting(x, y + 1, objDirt))
+if (!place_meeting(x, y + 1, objSolid))
 {
     vSpd += grav;
 }
@@ -16,7 +16,7 @@ else
     vSpd = 0;
     applyFriction(acc);
 }
-directionMoveBounce(objDirt);
+directionMoveBounce(objSolid);
 
 //change back to the move state
 if (hSpd == 0 && vSpd == 0)

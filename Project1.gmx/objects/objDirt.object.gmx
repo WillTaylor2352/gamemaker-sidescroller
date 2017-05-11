@@ -3,9 +3,9 @@
   <spriteName>sprDirt</spriteName>
   <solid>-1</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>objSolid</parentName>
   <maskName>sprSolid</maskName>
   <events/>
   <PhysicsObject>0</PhysicsObject>

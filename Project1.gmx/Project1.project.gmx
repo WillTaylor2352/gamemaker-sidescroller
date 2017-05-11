@@ -19,6 +19,8 @@
       <sprite>sprites\sprSolid</sprite>
       <sprite>sprites\sprDirt</sprite>
       <sprite>sprites\sprBackgroundDirt</sprite>
+      <sprite>sprites\sprEntrance</sprite>
+      <sprite>sprites\sprExit</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\sprSnake</sprite>
@@ -29,6 +31,9 @@
     </sprites>
     <sprites name="guiIcons">
       <sprite>sprites\sprHeart</sprite>
+    </sprites>
+    <sprites name="Effects">
+      <sprite>sprites\sprBlood</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -48,6 +53,7 @@
       <script>scripts\RunState.gml</script>
       <script>scripts\LedgeGrabState.gml</script>
       <script>scripts\HurtState.gml</script>
+      <script>scripts\ExitState.gml</script>
     </scripts>
     <scripts name="SnakeStates">
       <script>scripts\SnakeMoveRightState.gml</script>
@@ -70,8 +76,9 @@
     <objects name="Level">
       <object>objects\objSolid</object>
       <object>objects\objDirt</object>
-      <object>objects\objBackgroundDirt</object>
       <object>objects\objDirtNS</object>
+      <object>objects\objEntrance</object>
+      <object>objects\objExit</object>
     </objects>
     <objects name="Enemies">
       <object>objects\objEnemyParent</object>
@@ -79,12 +86,14 @@
       <object>objects\objBat</object>
       <object>objects\objSpider</object>
     </objects>
+    <objects name="effects">
+      <object>objects\objBlood</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <rooms name="roomRoom">
-      <room>rooms\room2</room>
-      <room>rooms\room1</room>
-    </rooms>
+    <room>rooms\room1</room>
+    <room>rooms\room2</room>
+    <room>rooms\room3</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -11,7 +11,7 @@ if (place_meeting(x+hSpd, y, collisionObject))
         // move the player in the direction of the object until it hits (while desired)
         x+=sign(hSpd);
     }
-    // set speed to zero if collision is detected
+    
     hSpd = -(hSpd/2);
 }
 x+=hSpd;

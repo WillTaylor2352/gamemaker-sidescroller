@@ -9,7 +9,7 @@ var upSpaceRelease = keyboard_check_released(vk_space);
 var down = keyboard_check(ord('S')) || keyboard_check(vk_down);
 
 //if not on the ground
-if (!place_meeting(x, y+1, objDirt))
+if (!place_meeting(x, y+1, objSolid))
 {
     // change player pos relative to the gravity (in create event)
     vSpd+=grav;
@@ -120,11 +120,11 @@ if (hSpd != 0)
                                     }
                                     */
 
-move(objDirt);
+move(objSolid);
 
 var falling = y-yprevious > 0;
-var wasNoWallWhileFalling = !position_meeting(x+17*image_xscale, yprevious, objDirt);
-var isWall = position_meeting(x+17*image_xscale, y, objDirt);
+var wasNoWallWhileFalling = !position_meeting(x+17*image_xscale, yprevious, objSolid);
+var isWall = position_meeting(x+17*image_xscale, y, objSolid);
 
 if(falling && wasNoWallWhileFalling && isWall)
 {
@@ -132,11 +132,11 @@ if(falling && wasNoWallWhileFalling && isWall)
     vSpd = 0;
     
     //move against the ledge
-    while (!place_meeting(x+image_xscale, y, objDirt))
+    while (!place_meeting(x+image_xscale, y, objSolid))
     {
         x+=image_xscale;
     }
-    while(position_meeting(x+17*image_xscale, y-1, objDirt))
+    while(position_meeting(x+17*image_xscale, y-1, objSolid))
     {
         y-=1;
     }
