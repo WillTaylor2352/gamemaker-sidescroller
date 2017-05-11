@@ -1,24 +1,30 @@
 ///moveState()
 
-var right = keyboard_check(ord('D'));
-var left = keyboard_check(ord('A'));
-var up = keyboard_check(ord('W'));
-var upRelease = keyboard_check_released(ord('W'));
+var right = keyboard_check(ord('D')) || keyboard_check(vk_right);
+var left = keyboard_check(ord('A')) || keyboard_check(vk_left);
+var up = keyboard_check(ord('W')) || keyboard_check(vk_up);
+var upRelease = keyboard_check_released(ord('W')) || keyboard_check_released(vk_up);
 var upSpace = keyboard_check(vk_space);
 var upSpaceRelease = keyboard_check_released(vk_space);
-var down = keyboard_check(ord('S'));
+var down = keyboard_check(ord('S')) || keyboard_check(vk_down);
 
 //if not on the ground
-if (!place_meeting(x, y+1, objSolid))
+if (!place_meeting(x, y+1, objDirt))
 {
     // change player pos relative to the gravity (in create event)
     vSpd+=grav;
+    
+    // set jump animation
+    sprite_index = sprPlayerJump;
+    image_speed = 0;
+    image_index = vSpd > 0;
     
     // control jumping
     if ((upRelease || upSpaceRelease) && vSpd < -6) 
     {
         vSpd = -6;
     }
+    
 }
 // otherwise if on the ground 
 else
@@ -31,22 +37,57 @@ else
         // jump 16 pixels into the air
         vSpd = -16;
     }
+    
+    // set player sprite to idle if no horizontal movement
+    if (hSpd == 0)
+    {
+        sprite_index = sprPlayerIdle;
+    }
+    // otherwise, make the player's walk animation run
+    else 
+    {
+        sprite_index = sprPlayerWalk;
+        image_speed = 1;
+    }
 } 
 
-// if right is pushed, set hspeed to positive speed (right)
-if (right)    
+                                    /*
+                                    // if right is pushed, set hspeed to positive speed (right)
+                                    if (right)    
+                                    {
+                                        hSpd = spd;
+                                        hSpdDir = 1;
+                                    }
+                                    
+                                    // if left is pushed, set hspeed to negative speed (left)
+                                    if (left)
+                                    {
+                                        hSpd = -spd;
+                                        hSpdDir = -1;
+                                    }
+                                    */
+
+if (left||right)
 {
-    hSpd = spd;
-    hSpdDir = 1;
+    hSpd += (right-left)*acc;
+    hSpdDir = right - left
+    
+    if (hSpd > spd)
+    {
+        hSpd = spd;
+    }
+    if (hSpd < -spd)
+    {
+        hSpd = -spd;
+    }
+}
+/**** friction (tells the player to stop moving) ****/
+else
+{
+    applyFriction(2);
 }
 
-// if left is pushed, set hspeed to negative speed (left)
-if (left)
-{
-    hSpd = -spd;
-    hSpdDir = -1;
-}
-
+// change the direction the player is facing
 if (hSpd != 0)
 {
     image_xscale = sign(hSpd);
@@ -63,15 +104,15 @@ if (hSpd != 0)
                                     {
                                         vSpd = spd;    
                                     }
-                                    */
+                                    
 
-/**** friction (tells the player to stop moving) ****/
-// if both right and left are not pushed, set speed to zero
-if (!right && !left)
-{
-    hSpd = 0;
-}
-
+                                    // former friction equation
+                                    // if both right and left are not pushed, set speed to zero
+                                    if (!right && !left)
+                                    {
+                                        hSpd = 0;
+                                    }
+                                    
                                     /**** similar to left / right friction, only tells the player to stop moving up and down
                                     if (!up && !down)
                                     {
@@ -79,11 +120,11 @@ if (!right && !left)
                                     }
                                     */
 
-move(objSolid);
+move(objDirt);
 
 var falling = y-yprevious > 0;
-var wasNoWallWhileFalling = !position_meeting(x+17*image_xscale, yprevious, objSolid);
-var isWall = position_meeting(x+17*image_xscale, y, objSolid);
+var wasNoWallWhileFalling = !position_meeting(x+17*image_xscale, yprevious, objDirt);
+var isWall = position_meeting(x+17*image_xscale, y, objDirt);
 
 if(falling && wasNoWallWhileFalling && isWall)
 {
@@ -91,11 +132,11 @@ if(falling && wasNoWallWhileFalling && isWall)
     vSpd = 0;
     
     //move against the ledge
-    while (!place_meeting(x+image_xscale, y, objSolid))
+    while (!place_meeting(x+image_xscale, y, objDirt))
     {
         x+=image_xscale;
     }
-    while(position_meeting(x+17*image_xscale, y-1, objSolid))
+    while(position_meeting(x+17*image_xscale, y-1, objDirt))
     {
         y-=1;
     }
