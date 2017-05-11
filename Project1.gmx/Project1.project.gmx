@@ -38,6 +38,7 @@
   <scripts name="scripts">
     <scripts name="HelperScripts">
       <script>scripts\move.gml</script>
+      <script>scripts\directionMoveBounce.gml</script>
       <script>scripts\horizontalMoveBounce.gml</script>
       <script>scripts\applyFriction.gml</script>
     </scripts>
