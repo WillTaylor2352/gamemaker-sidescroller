@@ -35,6 +35,8 @@ vSpd = 0;
 grav = 1.5;
 state = MoveState;
 
+// emitter
+audio_em = audio_emitter_create();
 
 </string>
           </argument>
@@ -101,16 +103,24 @@ if (aboveEnemy &amp;&amp; (falling || state == LedgeGrabState))
     //kill the enemy
     with (other)
     {
+        
         instance_destroy();
     }   
     
     vSpd = -(16/1.5);
+    
+    audio_play_sound(sndStep, 6, false);
 }
 else
 {
     //take damage
     if(state!=HurtState)
     {
+    
+        audio_emitter_pitch(audio_em, 1.6);
+        audio_emitter_gain(audio_em, 1.4);
+        audio_play_sound_on(audio_em, sndOuch, false, 8);
+        
         vSpd = -6;
         hSpd = (sign(x-other.x)*5);
         state = HurtState;
@@ -151,6 +161,8 @@ if (keyboard_check(vk_up))
 {
     y = yprevious;
     state = ExitState;
+    audio_stop_sound(sndJump);
+    audio_play_sound(sndExit, 5, false);
 }
 
 </string>

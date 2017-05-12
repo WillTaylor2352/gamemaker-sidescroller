@@ -35,8 +35,10 @@ else
     // if player presses up key
     if(up || upSpace) 
     {
+        
         // jump 16 pixels into the air
         vSpd = -16;
+        audio_play_sound(sndJump, 5, false);
     }
     
     // set player sprite to idle if no horizontal movement
@@ -121,6 +123,13 @@ if (hSpd != 0)
                                     }
                                     */
 
+if(place_meeting(x,y+vSpd+1, objSolid) && vSpd > 0)
+{
+    audio_emitter_pitch(audio_em, random_range(.8, 1.2));
+    audio_emitter_gain(audio_em, .2);
+    audio_play_sound_on(audio_em, sndStep, false, 6);
+}
+                                    
 move(objSolid);
 
 var falling = y-yprevious > 0;
@@ -143,6 +152,10 @@ if(falling && wasNoWallWhileFalling && isWall)
     }
     
     state = LedgeGrabState;
+    
+    audio_emitter_pitch(audio_em, 1.5);
+    audio_emitter_gain(audio_em, .1);
+    audio_play_sound_on(audio_em, sndStep, false, 6);
 }
 
 

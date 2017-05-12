@@ -36,6 +36,7 @@ else
     {
         // jump 16 pixels into the air
         vSpd = -16;
+        audio_play_sound(sndJump, 5, false);
     }
     
     // set player sprite to idle if no horizontal movement

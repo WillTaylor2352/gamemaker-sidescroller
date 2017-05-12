@@ -4,7 +4,17 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sndBat</sound>
+    <sound>sound\sndExit</sound>
+    <sound>sound\sndJump</sound>
+    <sound>sound\sndOuch</sound>
+    <sound>sound\sndSnake</sound>
+    <sound>sound\sndSpider</sound>
+    <sound>sound\sndStep</sound>
+    <sound>sound\sndTink</sound>
+    <sound>sound\sndMusic</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="Player">
       <sprite>sprites\sprPlayerDamage</sprite>
