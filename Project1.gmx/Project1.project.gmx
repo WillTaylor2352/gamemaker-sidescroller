@@ -14,6 +14,7 @@
     <sound>sound\sndStep</sound>
     <sound>sound\sndTink</sound>
     <sound>sound\sndMusic</sound>
+    <sound>sound\sndBossMusic</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Player">
@@ -33,6 +34,9 @@
       <sprite>sprites\sprExit</sprite>
       <sprite>sprites\sprDirtTop</sprite>
       <sprite>sprites\sprDirtEdge</sprite>
+      <sprite>sprites\sprSapphire</sprite>
+      <sprite>sprites\sprHeartCollect</sprite>
+      <sprite>sprites\sprLava</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\sprSnake</sprite>
@@ -43,13 +47,20 @@
     </sprites>
     <sprites name="guiIcons">
       <sprite>sprites\sprHeart</sprite>
+      <sprite>sprites\sprGUISapphire</sprite>
     </sprites>
     <sprites name="Effects">
       <sprite>sprites\sprBlood</sprite>
+      <sprite>sprites\sprSapphireChunk</sprite>
+      <sprite>sprites\sprFireBubble</sprite>
+    </sprites>
+    <sprites name="Boss">
+      <sprite>sprites\sprBoss</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bgDirt</background>
+    <background>background\bgMenu</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -80,7 +91,19 @@
       <script>scripts\SpiderIdleState.gml</script>
       <script>scripts\SpiderJumpState.gml</script>
     </scripts>
+    <scripts name="BossStates">
+      <script>scripts\BossIdleState.gml</script>
+      <script>scripts\BossLiftState.gml</script>
+      <script>scripts\BossChaseState.gml</script>
+      <script>scripts\BossSmashState.gml</script>
+      <script>scripts\BossStallState.gml</script>
+    </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fntTitle</font>
+    <font>fonts\fntStart</font>
+    <font>fonts\fntGUIFont</font>
+  </fonts>
   <objects name="objects">
     <objects name="Player">
       <object>objects\objPlayer</object>
@@ -93,6 +116,9 @@
       <object>objects\objEntrance</object>
       <object>objects\objExit</object>
       <object>objects\objBackground</object>
+      <object>objects\objSapphire</object>
+      <object>objects\objHeart</object>
+      <object>objects\objLava</object>
     </objects>
     <objects name="Enemies">
       <object>objects\objEnemyParent</object>
@@ -102,14 +128,22 @@
     </objects>
     <objects name="effects">
       <object>objects\objBlood</object>
+      <object>objects\objSapphireChunk</object>
+      <object>objects\objFireBubble</object>
+    </objects>
+    <objects name="Boss">
+      <object>objects\objBoss</object>
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rmMenu</room>
+    <room>rooms\room1</room>
     <room>rooms\room2</room>
+    <room>rooms\room3</room>
     <room>rooms\room4</room>
     <room>rooms\room5</room>
-    <room>rooms\room1</room>
-    <room>rooms\room3</room>
+    <room>rooms\room11</room>
+    <room>rooms\rmHighScore</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

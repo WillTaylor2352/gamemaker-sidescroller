@@ -23,5 +23,16 @@ directionMoveBounce(objSolid);
 //change back to the move state
 if (hSpd == 0 && vSpd == 0)
 {
+    if(objPlayerStats.hp <= 0)
+    {
+        if(objPlayerStats.sapphire >= 1)
+        {
+            objPlayerStats.sapphire -= 2;
+        }
+        
+        objPlayerStats.hp = objPlayerStats.maxHp - 2;
+        
+        room_restart();
+    }
     state = MoveState;
 }

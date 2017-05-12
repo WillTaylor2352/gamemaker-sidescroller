@@ -12,7 +12,7 @@ if (place_meeting(x+hSpd, y, collisionObject))
         x+=sign(hSpd);
     }
     
-    hSpd = -(hSpd/2);
+    hSpd = -(hSpd/4);
 }
 x+=hSpd;
 
